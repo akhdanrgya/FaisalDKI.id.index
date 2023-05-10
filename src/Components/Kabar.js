@@ -1,12 +1,9 @@
 import React from "react";
 
-class Kabar extends React.Component{
-    constructor(props){
-        super(props)
-    }
-    render(){
-        return(
-            <section class="latest_blog_area p_120" id="kabar">
+const Kabar = () =>{
+	return(
+		<>
+		<section class="latest_blog_area p_120" id="kabar">
         	<div class="container">
         		<div class="main_title">
         			<h2>Kabar</h2>
@@ -74,8 +71,8 @@ class Kabar extends React.Component{
         		</div>
         	</div>
         </section>
-        )
-    }
+		</>
+	)
 }
 
 export default Kabar

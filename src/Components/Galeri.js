@@ -1,12 +1,9 @@
 import React from "react";
 
-class Galeri extends React.Component{
-    constructor(props){
-        super(props)
-    }
-    render(){
-        return(
-            <section class="projects_area p_120" id="galeri">
+const Galeri = () =>{
+	return(
+		<>
+		 <section class="projects_area p_120" id="galeri">
         	<div class="container">
         		<div class="main_title">
 					<h2>Galeri</h2>
@@ -33,8 +30,8 @@ class Galeri extends React.Component{
 				</div>
         	</div>
         </section>
-        )
-    }
+		</>
+	)
 }
 
 export default Galeri
