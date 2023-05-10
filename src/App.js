@@ -1,5 +1,5 @@
 import React from 'react';
-import Headers from './Components/Headers'
+import Headers from './Components/Headers';
 import Home from './Components/Home';
 import Tentang from './Components/Tentang';
 import Visi from './Components/Visi';
