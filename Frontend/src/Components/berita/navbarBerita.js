@@ -31,7 +31,7 @@ const NavBerita = () => {
               >
                 <ul class="nav navbar-nav menu_nav ml-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#home">
+                    <a class="nav-link" href="">
                       Home
                     </a>
                   </li>

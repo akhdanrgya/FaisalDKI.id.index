@@ -1,16 +1,21 @@
 import { useState } from "react";
 import Headers from "../Components/Headers";
-import Label from "../Components/admin/label";
+import Validation from "../Components/admin/ad.js";
 
 const Admin = () => {
-  console.log("re-rendered");
+  const [values, setValues] = useState({
+    password: " "
+  });
+  const [errors, setErrors] = useState({});
+  function handleInput(event) {
+    const newObj = { ...values, [event.target.name]: event.target.value };
+    setValues(newObj);
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const data = new FormData(e.target);
-    console.log(Object.fromEntries(data.entries()));
-  };
+  function handleValidation(event) {
+    event.preventDefault();
+    setErrors(Validation(values));
+  }
 
   return (
     <>
@@ -28,14 +33,19 @@ const Admin = () => {
                 <h5 class="card-title text-center mb-5 fw-light fs-5">
                   Sign In
                 </h5>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleValidation}>
                   <div class="form-floating mb-3">
-                    <label for="floatingInput">Username</label>
-                    <Label placeholder="Username" name="username"/>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <label for="floatingPassword">Password</label>
-                    <Label placeholder="Password" name="password" type="password"/>
+                    <label for="floatingPassword">Password Admin</label>
+                    <input
+                      placeholder="Password"
+                      name="password"
+                      type="password"
+                      class="form-control"
+                      onChange={handleInput}
+                    />
+                    {errors.password && (
+                      <p style={{ color: "red" }}>{errors.password}</p>
+                    )}
                   </div>
                   <div class="d-grid">
                     <button
