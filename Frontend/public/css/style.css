@@ -3100,3 +3100,13 @@ h6 {
 
   /* end of login */
 
+ /* berita */
+
+ .foto_berita {
+  justify-content: center;
+ }
+
+ .portfolio_details_inner h4 {
+  color: black;
+  
+ }

@@ -1,5 +1,6 @@
 import Main from "./Pages/Main"
 import Admin from "./Pages/Admin"
+import PortalBerita from "./Pages/PortalBerita"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 
@@ -9,6 +10,7 @@ const App = () =>{
       <Routes>
         <Route path="/" element={<Main/>}/>
         <Route path="/adminfaisal" element={<Admin/>}/>
+        <Route path="/test" element={<PortalBerita/>}/>
       </Routes>
     </Router>
   )

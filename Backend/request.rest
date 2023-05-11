@@ -9,8 +9,8 @@ Content-Type: application/json
 
 {
     "title": "John Doe",
-    "image": "blabla",
-    "berita": "blabla"
+    "foto": "https.blablablablablablabla",
+    "berita": "waw gokil"
 }
 
 ###
@@ -18,9 +18,9 @@ PATCH http://localhost:5000/users/1
 Content-Type: application/json
 
 {
-    "title": "gokil kacau",
-    "image": "blabla1",
-    "berita": "blabla1"
+    "title": "M Fikri",
+    "foto": "mfikri@gmail.com",
+    "berita": "Male"
 }
 
 ###
