@@ -22,7 +22,7 @@ const Header2 = () => {
             <div class="container box_1620">
               {/* Brand and toggle get grouped for better mobile display */}
               <a class="navbar-brand logo_h" href="index.html">
-                <img src="img/logo-partai.png" alt="" />
+                <img src="img/logo-nav.png" alt="" />
               </a>
               <button
                 class="navbar-toggler"
