@@ -1,6 +1,44 @@
+import { useState } from "react";
 import Headers from "../Components/Headers";
+import Label from "../Components/admin/label";
 
 const Admin = () => {
+  const [values, setValues] = useState({
+    username: "",
+    password: ""
+  });
+
+  const inputs = [
+    {
+      id:1,
+      name:"username",
+      type:"text",
+      placeholder:"Username",
+      label:"Username"
+    },
+    {
+      id:2,
+      name:"password",
+      type:"text",
+      placeholder:"Password",
+      label:"Password"
+    }
+  ]
+  console.log("re-rendered");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = new FormData(e.target);
+    console.log(Object.fromEntries(data.entries()));
+  };
+
+  const onChange = (e) => {
+    setValues({...values, [e.target.name]: e.target.value})
+  }
+
+  console.log(values)
+
   return (
     <>
       {/* Navbar Section */}
@@ -17,45 +55,27 @@ const Admin = () => {
                 <h5 class="card-title text-center mb-5 fw-light fs-5">
                   Sign In
                 </h5>
-                <form>
+                  {inputs.map((input)=>(
+
+                    <form onSubmit={handleSubmit}>
                   <div class="form-floating mb-3">
                     <label for="floatingInput">Username</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="floatingInput"
-                      placeholder="username"
-                    />
+                    <Label key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
                   </div>
                   <div class="form-floating mb-3">
                     <label for="floatingPassword">Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="floatingPassword"
-                      placeholder="Password"
-                    />
-                  </div>
-                  <div class="form-check mb-3">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="rememberPasswordCheck"
-                    />
-                    <label class="form-check-label" for="rememberPasswordCheck">
-                      Remember password
-                    </label>
+                    <Label key={input.id} {...input} value={values[input.name]} onChange={onChange} />
                   </div>
                   <div class="d-grid">
                     <button
                       class="btn btn-primary btn-login text-uppercase fw-bold"
                       type="submit"
-                    >
+                      >
                       Sign in
                     </button>
                   </div>
                 </form>
+                      ))}
               </div>
             </div>
           </div>
