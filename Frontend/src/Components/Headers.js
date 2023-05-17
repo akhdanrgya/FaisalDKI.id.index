@@ -1,5 +1,6 @@
 import { useState } from "react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header2 = () => {
   const [navbar, setNavbar] = useState(false);
@@ -16,12 +17,18 @@ const Header2 = () => {
 
   return (
     <>
-      <header className={navbar ? "header_area navbar_fixed header_area1" : "header_area header_area2"}>
+      <header
+        className={
+          navbar
+            ? "header_area navbar_fixed header_area1"
+            : "header_area header_area2"
+        }
+      >
         <div class="main_menu" id="mainNav">
           <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container box_1620">
               {/* Brand and toggle get grouped for better mobile display */}
-              <a class="navbar-brand logo_h" href="index.html">
+              <a class="navbar-brand logo_h" href="/">
                 <img src="img/logo-nav.png" alt="" />
               </a>
               <button
@@ -58,11 +65,6 @@ const Header2 = () => {
                       Visi Misi
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#programkerja">
-                      Program Kerja
-                    </a>
-                  </li>
 
                   <li class="nav-item submenu dropdown">
                     <a
@@ -77,13 +79,13 @@ const Header2 = () => {
                     </a>
                     <ul class="dropdown-menu">
                       <li class="nav-item">
-                        <a class="nav-link" href="#kabar">
-                          Kabar
+                        <a class="nav-link" href="#programkerja">
+                          Program Kerja
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#relawan">
-                          Relawan
+                        <a class="nav-link" href="#kabar">
+                          Kabar
                         </a>
                       </li>
                       <li class="nav-item">
@@ -96,7 +98,13 @@ const Header2 = () => {
                           kontak
                         </a>
                       </li>
+
                     </ul>
+                  </li>
+                      <li class="nav-item">
+                    <Link class="nav-link" style={{color: "red"}} href="#visi" to={"/relawan/form"}>
+                      Daftar Menjadi Relawan
+                    </Link>
                   </li>
                 </ul>
               </div>

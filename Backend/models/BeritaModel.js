@@ -1,9 +1,9 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import berita from "../config/Berita.js";
 
 const { DataTypes } = Sequelize;
 
-const Berita = db.define( "berita",{
+const Berita = berita.define( "berita",{
     title: DataTypes.STRING,
     image: DataTypes.STRING,
     url: DataTypes.STRING,
@@ -17,5 +17,5 @@ const Berita = db.define( "berita",{
 export default Berita;
 
 (async()=>{
-    await db.sync()
+    await berita.sync()
 })()

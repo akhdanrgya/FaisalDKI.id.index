@@ -26,6 +26,7 @@ class Visi extends React.Component {
                 </p>
                 <br></br>
                 <br></br>
+                <br></br>
               </div>
             </div>
             <div class="col-lg-6 col-md-8">

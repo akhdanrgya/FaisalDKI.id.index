@@ -1,6 +1,21 @@
 import React from "react";
+import axios from "axios";
+import HTMLReactParser from "html-react-parser";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Kabar = () => {
+  const [kabar, setKabar] = useState([]);
+
+  useEffect(() => {
+    getKabar();
+  }, []);
+
+  const getKabar = async () => {
+    const response = await axios.get("http://localhost:5000/berita");
+    setKabar(response.data);
+  };
+
   return (
     <>
       <section class="latest_blog_area p_120" id="kabar">
@@ -113,6 +128,31 @@ const Kabar = () => {
                 </div>
               </div>
             </div>
+            {/* dari api */}
+            {kabar.map((berita) => (
+
+              <div class="col-lg-4">
+              <div class="l_blog_item">
+                <div class="l_blog_img">
+                  <img class="img-fluid" src={berita.url} alt="" />
+                </div>
+                <div class="l_blog_text">
+                  <div class="date">
+                    <a href="">
+                      30 Nov, 2022 | By Admin
+                    </a>
+                  </div>
+                  <Link to={`/kabar/${berita.title}`}>
+                    <h4>
+                      {berita.title}
+                    </h4>
+                  </Link>
+                  {HTMLReactParser(berita.artikel)}
+                </div>
+              </div>
+            </div>
+              ))}
+            {/* end */}
           </div>
         </div>
       </section>

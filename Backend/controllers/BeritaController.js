@@ -96,7 +96,7 @@ export const deleteBerita = async(req, res) =>{
         where:{
             id: req.params.id
         }
-    })
+    });
     if(!berita) return res.status(404).json({msg: "No Data Found"})
     try {
         const filepath = `./public/images/${berita.image}`

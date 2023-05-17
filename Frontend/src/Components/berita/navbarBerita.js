@@ -1,98 +1,49 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const NavBerita = () => {
+const HeaderB = () => {
   return (
     <>
-      <header className="header_area_berita">
-        <div class="main_menu" id="mainNav">
-          <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container box_1620">
-              {/* Brand and toggle get grouped for better mobile display */}
-              <a class="navbar-brand logo_h" href="index.html">
-                <img src="img/logo-nav.png" alt="" />
-              </a>
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              {/* Collect the nav links, forms, and other content for toggling */}
-              <div
-                class="collapse navbar-collapse offset"
-                id="navbarSupportedContent"
-              >
-                <ul class="nav navbar-nav menu_nav ml-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="">
-                      Home
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#tentang">
-                      Tentang
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#visi">
-                      Visi Misi
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#programkerja">
-                      Program Kerja
-                    </a>
-                  </li>
+    <nav class="navbar navbar-expand-lg" style={{backgroundColor: "#fff", boxShadow: "0px 3px 16px 0px rgba(0, 0, 0, 0.1)" }}>
+  
+  <div class="container-fluid">
+    
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarCenteredExample"
+      aria-controls="navbarCenteredExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
 
-                  <li class="nav-item submenu dropdown">
-                    <a
-                      href="#"
-                      class="nav-link dropdown-toggle"
-                      data-toggle="dropdown"
-                      role="button"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Lainnya
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="nav-link" href="#kabar">
-                          Kabar
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#relawan">
-                          Relawan
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#galeri">
-                          Galeri
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#kontak">
-                          kontak
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
+    
+    <div
+      class="collapse navbar-collapse justify-content-center"
+      id="navbarCenteredExample"
+    >
+      
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" style={{color: "black"}} aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+        <Link class="nav-link" style={{color: "red"}} href="#visi" to={"/relawan/form"}>
+                      Daftar Menjadi Relawan
+                    </Link>
+        </li>
+      </ul>
+      
+    </div>
+    
+  </div>
+  
+</nav>
     </>
-  );
-};
+  )
+}
 
-export default NavBerita;
+export default HeaderB

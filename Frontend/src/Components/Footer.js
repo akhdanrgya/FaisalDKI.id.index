@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Footer extends React.Component {
   constructor(props) {
@@ -48,12 +49,12 @@ class Footer extends React.Component {
                 <ul class="list">
                   <li>
                     <a href="#">
-                      <i class="fa fa-facebook"></i>
+                    <i class="fa-brands fa-tiktok"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <i class="fa fa-twitter"></i>
+                    <a href="https://www.instagram.com/ahmadfaisaldki/">
+                      <i class="fa fa-instagram"></i>
                     </a>
                   </li>
                 </ul>

@@ -1,37 +1,42 @@
 import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
-const Galeri = () =>{
-	return(
-		<>
-		 <section class="projects_area p_120" id="galeri">
-        	<div class="container">
-        		<div class="main_title">
-					<h2>Galeri</h2>
-					<p>Perjalanan kami memperjuangkan aspirasi Anda</p>
-				</div>
-        		<div class="projects_fillter">
-				</div>
-				<div class="projects_inner row">
-					<div class="col-lg-2 col-sm-6 brand web">
-						<div class="projects_item">
-							<img class="img-fluid" src="img/gallery/1.jpg" alt=""/>
-							<div class="projects_text">
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-6 brand work">
-						<div class="projects_item">
-							<img class="img-fluid" src="img/gallery/2.jpg" alt=""/>
-							<div class="projects_text">
-							</div>
-						</div>
-					</div>
-				</div>
-        	</div>
-        </section>
-		</>
-	)
-}
+const Galeri = () => {
+  const [galeri, setGaleri] = useState([]);
 
-export default Galeri
+  useEffect(() => {
+    getGaleri();
+  }, []);
+
+  const getGaleri = async () => {
+    const response = await axios.get("http://localhost:5000/galeri");
+    setGaleri(response.data);
+  };
+
+  return (
+    <>
+      <section class="projects_area p_120" id="galeri">
+        <div class="container">
+          <div class="main_title">
+            <h2>Galeri</h2>
+            <p>Perjalanan kami memperjuangkan aspirasi Anda</p>
+          </div>
+          <div class="projects_fillter"></div>
+          <div class="projects_inner row">
+            {galeri.map((galeri) => (
+              <div class="col-lg-4 col-sm-8 brand web">
+                <div class="projects_item">
+                  <img class="img-fluid" src={galeri.url} alt="" />
+                  <div class="projects_text"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Galeri;

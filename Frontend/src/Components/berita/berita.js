@@ -1,53 +1,84 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import HTMLReactParser from "html-react-parser";
+import { useParams } from "react-router-dom";
+import KabarU from "./KabarTerupdate";
+import Footer from "../Footer";
+import HeaderB from "./navbarBerita";
 
-// memanggil data dri backend
 const News = () => {
   const [berita, setBerita] = useState([]);
+  const { title } = useParams();
 
   useEffect(() => {
     getBerita();
-  }, []);
+  }, [title]);
 
   const getBerita = async () => {
-    const response = await axios.get("http://localhost:5000/berita");
+    const response = await axios.get(
+      `http://localhost:5000/berita?title=${title}`
+    );
     setBerita(response.data);
   };
-// -------------------------------------------
+
   return (
     <>
-      {/* data dari data base */}
-      {berita.map((berita) => (
-        <section class="portfolio_details_area p_120">
+      {/* nav */}
+      <HeaderB />
+      {/* end of nav */}
+
+      {/* header */}
+      <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+          <div
+            class="overlay bg-parallax"
+            data-stellar-ratio="0.9"
+            data-stellar-vertical-offset="0"
+            data-background=""
+          ></div>
           <div class="container">
-            <div class="portfolio_details_inner">
-              <div class="row foto_berita">
-                <div class="col-md-6">
-                  <div class="left_img  ">
-                    <img
-                      class="img-fluid"
-                      // dri data base
-                      src={berita.url}
-                      // -------------
-                      alt=""
-                      />
-                  </div>
-                </div>
-              </div>
-              <div class="portfolio_right_text">
-                {/* ini juga dri data base */}
-                <h4>{berita.title}</h4>
-                <p> {berita.artikel}</p>
-                {/* ----------------- */}
+            <div class="banner_content text-center">
+              <h2>Kabar</h2>
+              <div class="page_link">
+                <a href="/">Home</a>
+                <a>Kabar</a>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+      {/* end of header */}
+      {berita.map((berita) => (
+        <div className="container py-5">
+          <div className="row justify-content-center">
+            <div className="col-lg-8">
+              <div class="mb-6 main_title">
+                <h2>{berita.title}</h2>
+              </div>
+              <div className="mb-4">
+                <p className="text-muted">
+                  Oleh <a href="">Admin</a> | 16 Mei 2023
+                </p>
+              </div>
+              <div className="mb-6">
+                <img
+                  src={berita.url}
+                  alt="Gambar Artikel"
+                  className="img-fluid"
+                />
+              </div>
+              <div className="mb-6 lead">{HTMLReactParser(berita.artikel)}</div>
+            </div>
+          </div>
+        </div>
       ))}
+      {/* kabar terupdate */}
+      <KabarU />
+
+      {/* footer */}
+
+      <Footer />
     </>
   );
 };
-// end off data dari data base
-
 export default News;
