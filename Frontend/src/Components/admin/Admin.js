@@ -15,7 +15,7 @@ const Admin = () => {
         email: email,
         password: password,
       });
-      // navigate("/adminfaisal/dashboard");
+      navigate("/adminfaisal/dashboard");
       console.log("login berhasil")
     } catch (error) {
       if (error.response) {
