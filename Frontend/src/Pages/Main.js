@@ -38,7 +38,7 @@ const Main = () => {
         {/*================End Relawan Area =================*/}
 
         {/*================Latest Galeri Area =================*/}
-        <Galeri />
+        {/* <Galeri /> */}
 
         {/* {Footer Area} */}
         <Footer />

@@ -11,6 +11,7 @@ import AdminPostKabar from "./Components/admin/AdminPostKabar"
 import AddGaleri from "./Components/admin/AddGaleri"
 import EditBerita from "./Components/admin/AdminEditKabar"
 import News from "./Components/berita/berita"
+import BlankPage from "./Pages/Blank";
 
 
 const App = () =>{
@@ -38,11 +39,17 @@ const App = () =>{
       
         <Route path="/adminfaisal/dashboard" element={<AdminDash/>}/>
         <Route path="/adminfaisal/data/pendukung" element={<AdminTeam/>}/>
-        <Route path="/adminfaisal/post/galeri" element={<AdminPostGaleri/>}/>
         <Route path="/adminfaisal/post/kabar" element={<AdminPostKabar/>}/>
-        <Route path="/adminfaisal/post/galeri/upload" element={<AddGaleri/>}/>
         <Route path="/adminfaisal/post/kabar/edit/:id" element={<EditBerita/>}/>
 
+        {/* blank page */}
+
+        <Route path="*" element={<BlankPage/>}/>
+
+        {/* maintenance */}
+
+        {/* <Route path="/adminfaisal/post/galeri/upload" element={<AddGaleri/>}/> */}
+        {/* <Route path="/adminfaisal/post/galeri" element={<AdminPostGaleri/>}/> */}
 
       </Routes>
     </Router>

@@ -5,10 +5,11 @@ import Sidebar from "../../scenes/global/Sidebar";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "../../theme";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import JoditEditor from "jodit-react";
 import { useRef } from "react";
 import HTMLReactParser from "html-react-parser";
+import jwt_decode from "jwt-decode"
 
 const AdminPostKabar = () => {
   const [theme, colorMode] = useMode();
@@ -17,6 +18,54 @@ const AdminPostKabar = () => {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState("");
   const [preview, setPreview] = useState("");
+  const navigate = useNavigate("")
+  const [setUsers] = useState([]);
+  const [expire, setExpire] = useState('');
+  const [name, setName] = useState('');
+  const [token, setToken] = useState("");
+  useEffect(() => {
+    refreshToken();
+  }, []);
+  
+  const refreshToken = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/token');
+      setToken(response.data.accessToken);
+      const decoded = jwt_decode(response.data.accessToken);
+      setName(decoded.name);
+      setExpire(decoded.exp);
+      } catch (error) {
+        if (error.response) {
+          navigate('/adminfaisal')
+        }
+      }
+    }
+
+const axiosJWT = axios.create();
+
+axiosJWT.interceptors.request.use(async (config) => {
+    const currentDate = new Date();
+    if (expire * 1000 < currentDate.getTime()) {
+        const response = await axios.get('http://localhost:5000/token');
+        config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+        setToken(response.data.accessToken);
+        const decoded = jwt_decode(response.data.accessToken);
+        setName(decoded.name);
+        setExpire(decoded.exp);
+    }
+    return config;
+}, (error) => {
+    return Promise.reject(error);
+});
+
+const getUsers = async () => {
+  const response = await axiosJWT.get('http://localhost:5000/users', {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  });
+  setUsers(response.data);
+}
 
   const loadImage = (e) => {
     const image = e.target.files[0];
