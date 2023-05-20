@@ -63,6 +63,8 @@ const getUsers = async () => {
   setUsers(response.data);
 }
 
+// ---------------------------------------------------------
+
   useEffect(() => {
     getBeritaById();
   }, []);
@@ -93,7 +95,7 @@ const getUsers = async () => {
           "Content-type": "multipart/form-data",
         },
       });
-      navigate("/post/kabar");
+      navigate("/adminfaisal//post/kabar");
     } catch (error) {
       console.log(error);
     }

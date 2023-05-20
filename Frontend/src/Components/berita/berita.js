@@ -8,15 +8,15 @@ import HeaderB from "./navbarBerita";
 
 const News = () => {
   const [berita, setBerita] = useState([]);
-  const { title } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     getBerita();
-  }, [title]);
+  }, [id]);
 
   const getBerita = async () => {
     const response = await axios.get(
-      `http://localhost:5000/berita?title=${title}`
+      `http://localhost:5000/berita?title=${id}`
     );
     setBerita(response.data);
   };

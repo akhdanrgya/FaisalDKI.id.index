@@ -83,7 +83,7 @@ const Kabar = () => {
                 <div class="l_blog_text">
                   <div class="date">
                     <a href="https://penamas.id/tim-relawan-pcnu-jaksel-bantu-korban-gempa-cianjur/">
-                      30 Nov, 2022 | By Mark Wiens
+                      30 Nov, 2022 | By Redaksi
                     </a>
                   </div>
                   <a href="https://penamas.id/tim-relawan-pcnu-jaksel-bantu-korban-gempa-cianjur/">
@@ -108,7 +108,7 @@ const Kabar = () => {
                 <div class="l_blog_text">
                   <div class="date">
                     <a href="https://jakarta.nu.or.id/jakarta-raya/pcnu-jakarta-selatan-berbagi-takjil-selama-ramadhan-1443-h-Ue1xf">
-                      30 Nov, 2022 | By Mark Wiens
+                      3 Apr, 2022 | By Alfaiz Kurniawan
                     </a>
                   </div>
                   <a href="https://jakarta.nu.or.id/jakarta-raya/pcnu-jakarta-selatan-berbagi-takjil-selama-ramadhan-1443-h-Ue1xf">

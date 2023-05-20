@@ -8,6 +8,8 @@ import { ColorModeContext, useMode } from "../theme";
 import "./admin.css";
 import { useNavigate } from "react-router-dom";
 
+// axios.defaults.withCredentials = true;
+
 function AdminDash() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
