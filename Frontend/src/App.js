@@ -24,7 +24,7 @@ const App = () =>{
         <Route path="/" element={<Main/>}/>
         <Route path="/adminfaisal" element={<Admin/>}/>
         <Route path="/relawan/form" element={<RelawanForm/>}/>
-        <Route path="/kabar/:title" element={<News/>}/>
+        <Route path="/kabar/:id" element={<News/>}/>
 
         {/* testing future */}
       {/* <PrivateRoute path="/adminfaisal/dashboard" element={<AdminDash />} />
@@ -48,8 +48,8 @@ const App = () =>{
 
         {/* maintenance */}
 
-        {/* <Route path="/adminfaisal/post/galeri/upload" element={<AddGaleri/>}/> */}
-        {/* <Route path="/adminfaisal/post/galeri" element={<AdminPostGaleri/>}/> */}
+        <Route path="/post/galeri/upload" element={<AddGaleri/>}/>
+        <Route path="/adminfaisal/post/galeri" element={<AdminPostGaleri/>}/>
 
       </Routes>
     </Router>

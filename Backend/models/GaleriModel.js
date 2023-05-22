@@ -3,17 +3,19 @@ import GaleriData from "../config/Galeridata.js";
 
 const { DataTypes } = Sequelize;
 
-const galeri = GaleriData.define( "galeri",{
+const galeri = GaleriData.define(
+  "galeri",
+  {
     image: DataTypes.STRING,
     url: DataTypes.STRING,
   },
   {
-    freezeTableName: true
+    freezeTableName: true,
   }
 );
 
 export default galeri;
 
-(async()=>{
-    await GaleriData.sync()
-})()
+(async () => {
+  await GaleriData.sync();
+})();

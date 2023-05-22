@@ -25,7 +25,7 @@ const EditBerita = () => {
   
   const refreshToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/token');
+      const response = await axios.get('http://localhost:5500/token');
       setToken(response.data.accessToken);
       const decoded = jwt_decode(response.data.accessToken);
       setName(decoded.name);
@@ -42,7 +42,7 @@ const axiosJWT = axios.create();
 axiosJWT.interceptors.request.use(async (config) => {
     const currentDate = new Date();
     if (expire * 1000 < currentDate.getTime()) {
-        const response = await axios.get('http://localhost:5000/token');
+        const response = await axios.get('http://localhost:5500/token');
         config.headers.Authorization = `Bearer ${response.data.accessToken}`;
         setToken(response.data.accessToken);
         const decoded = jwt_decode(response.data.accessToken);
@@ -55,7 +55,7 @@ axiosJWT.interceptors.request.use(async (config) => {
 });
 
 const getUsers = async () => {
-  const response = await axiosJWT.get('http://localhost:5000/users', {
+  const response = await axiosJWT.get('http://localhost:5500/users', {
       headers: {
           Authorization: `Bearer ${token}`
       }
@@ -70,7 +70,7 @@ const getUsers = async () => {
   }, []);
 
   const getBeritaById = async () => {
-    const response = await axios.get(`http://localhost:5000/berita/${id}`);
+    const response = await axios.get(`http://localhost:5500/berita/${id}`);
     setTitle(response.data.title);
     setFile(response.data.image);
     setPreview(response.data.url);
@@ -90,7 +90,7 @@ const getUsers = async () => {
     formData.append("title", title);
     formData.append("artikel", content);
     try {
-      await axios.patch(`http://localhost:5000/Berita/${id}`, formData, {
+      await axios.patch(`http://localhost:5500/Berita/${id}`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
         },

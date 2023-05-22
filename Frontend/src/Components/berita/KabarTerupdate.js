@@ -12,7 +12,7 @@ const KabarU = () => {
   }, []);
 
   const getKabar = async () => {
-    const response = await axios.get("http://localhost:5000/berita");
+    const response = await axios.get("http://localhost:5500/berita");
     setKabar(response.data);
   };
 

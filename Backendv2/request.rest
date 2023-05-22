@@ -1,0 +1,41 @@
+GET http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsIm5hbWUiOiJnb2tpbGthY2F1IiwiZW1haWwiOiJjb250b2hAZ21haWwuY29tIiwiaWF0IjoxNjg0MzM1MzQyLCJleHAiOjE2ODQzMzUzNTd9.hMfQpV97KvyG-JYSzZi76kR7yFUEzZ4yUxzVT5xaGoc
+###
+GET http://localhost:5000/users/1
+
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "title": "John Doe",
+    "foto": "https.blablablablablablabla",
+    "berita": "waw gokil"
+}
+
+###
+PATCH http://localhost:5000/users/1
+Content-Type: application/json
+
+{
+    "title": "M Fikri",
+    "foto": "mfikri@gmail.com",
+    "berita": "Male"
+}
+
+
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "contoh@gmail.com",
+    "password": "123"
+}
+
+###
+GET http://localhost:5000/token
+
+###
+DELETE http://localhost:5000/logout

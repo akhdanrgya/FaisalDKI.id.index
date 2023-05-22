@@ -10,7 +10,7 @@ const Galeri = () => {
   }, []);
 
   const getGaleri = async () => {
-    const response = await axios.get("http://localhost:5000/galeri");
+    const response = await axios.get("http://localhost:5500/galeri");
     setGaleri(response.data);
   };
 

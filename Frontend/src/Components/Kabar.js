@@ -12,7 +12,7 @@ const Kabar = () => {
   }, []);
 
   const getKabar = async () => {
-    const response = await axios.get("http://localhost:5000/berita");
+    const response = await axios.get("http://localhost:5500/berita");
     setKabar(response.data);
   };
 
@@ -142,7 +142,7 @@ const Kabar = () => {
                       30 Nov, 2022 | By Admin
                     </a>
                   </div>
-                  <Link to={`/kabar/${berita.title}`}>
+                  <Link to={`/kabar/${berita.id}`}>
                     <h4>
                       {berita.title}
                     </h4>

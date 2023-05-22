@@ -29,7 +29,7 @@ const AdminPostKabar = () => {
   
   const refreshToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/token');
+      const response = await axios.get('http://localhost:5500/token');
       setToken(response.data.accessToken);
       const decoded = jwt_decode(response.data.accessToken);
       setName(decoded.name);
@@ -46,7 +46,7 @@ const axiosJWT = axios.create();
 axiosJWT.interceptors.request.use(async (config) => {
     const currentDate = new Date();
     if (expire * 1000 < currentDate.getTime()) {
-        const response = await axios.get('http://localhost:5000/token');
+        const response = await axios.get('http://localhost:5500/token');
         config.headers.Authorization = `Bearer ${response.data.accessToken}`;
         setToken(response.data.accessToken);
         const decoded = jwt_decode(response.data.accessToken);
@@ -59,7 +59,7 @@ axiosJWT.interceptors.request.use(async (config) => {
 });
 
 const getUsers = async () => {
-  const response = await axiosJWT.get('http://localhost:5000/users', {
+  const response = await axiosJWT.get('http://localhost:5500/users', {
       headers: {
           Authorization: `Bearer ${token}`
       }
@@ -81,7 +81,7 @@ const getUsers = async () => {
     formData.append("artikel", content);
 
     try {
-      await axios.post("http://localhost:5000/berita", formData, {
+      await axios.post("http://localhost:5500/berita", formData, {
         headers: {
           "content-type": "multipart/form-data",
         },
@@ -100,13 +100,13 @@ const getUsers = async () => {
   }, []);
 
   const getKabar = async () => {
-    const response = await axios.get("http://localhost:5000/berita");
+    const response = await axios.get("http://localhost:5500/berita");
     setKabar(response.data);
   };
 
   const deleteBerita = async (beritaId) => {
     try {
-      await axios.delete(`http://localhost:5000/berita/${beritaId}`);
+      await axios.delete(`http://localhost:5500/berita/${beritaId}`);
       getKabar();
     } catch (error) {
       console.log(error);

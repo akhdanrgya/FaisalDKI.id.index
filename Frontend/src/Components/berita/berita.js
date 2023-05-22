@@ -7,7 +7,7 @@ import Footer from "../Footer";
 import HeaderB from "./navbarBerita";
 
 const News = () => {
-  const [berita, setBerita] = useState([]);
+  const [berita, setBerita] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,10 +15,14 @@ const News = () => {
   }, [id]);
 
   const getBerita = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/berita?title=${id}`
-    );
-    setBerita(response.data);
+    try {
+      const response = await axios.get(`http://localhost:5500/berita/${id}`);
+      const data = response.data;
+      setBerita(data);
+      console.log(data)
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -48,7 +52,7 @@ const News = () => {
         </div>
       </section>
       {/* end of header */}
-      {berita.map((berita) => (
+      {berita && (
         <div className="container py-5">
           <div className="row justify-content-center">
             <div className="col-lg-8">
@@ -67,18 +71,20 @@ const News = () => {
                   className="img-fluid"
                 />
               </div>
-              <div className="mb-6 lead">{HTMLReactParser(berita.artikel)}</div>
+              <div className="mb-6 lead">
+                {HTMLReactParser(berita.artikel)}
+              </div>
             </div>
           </div>
         </div>
-      ))}
+      )}
       {/* kabar terupdate */}
       <KabarU />
 
       {/* footer */}
-
       <Footer />
     </>
   );
 };
+
 export default News;

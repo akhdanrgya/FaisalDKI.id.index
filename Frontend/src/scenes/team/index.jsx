@@ -19,7 +19,7 @@ const Team = () => {
   }, []);
 
   const getPendukung = async () => {
-    const response = await axios.get("http://localhost:5000/pendukung");
+    const response = await axios.get("http://localhost:5500/pendukung");
     setPendukung(response.data);
   };
 
