@@ -3,6 +3,10 @@ import path from "path"
 import fs from "fs"
 import { json } from "sequelize"
 
+// const fs = require('fs')
+// const path = require('path')
+// const json = require('sequelize')
+
 export const getPendukung = async(req,res) => {
     try {
         const response = await Pendukung.findAll()

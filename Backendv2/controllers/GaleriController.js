@@ -2,6 +2,9 @@ import Galeri from "../models/GaleriModel.js";
 import path from "path"
 import fs from "fs"
 
+// const fs = require('fs')
+// const path = require('path')
+
 export const getGaleri = async(req, res) =>{
     try {
         const response =  await Galeri.findAll()

@@ -6,6 +6,7 @@ import {
   deleteGaleri,
   saveGaleri,
 } from "../controllers/GaleriController.js";
+// const express = require('express')
 
 const router = express.Router();
 

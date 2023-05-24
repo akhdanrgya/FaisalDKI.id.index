@@ -95,7 +95,7 @@ const getUsers = async () => {
           "Content-type": "multipart/form-data",
         },
       });
-      navigate("/adminfaisal//post/kabar");
+      navigate("/adminfaisal/post/kabar");
     } catch (error) {
       console.log(error);
     }

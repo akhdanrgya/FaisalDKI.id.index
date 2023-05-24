@@ -1,16 +1,20 @@
 import express from "express";
 import cors from "cors";
-import db from "./config/Database.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-
 import fileUpload from "express-fileupload";
+
+import db from "./config/Database.js";
 import BeritaRoute from "./routes/BeritaRoute.js";
 import GaleriRoute from "./routes/GaleriRoute.js";
 import router from "./routes/index.js";
 import PendukungRoute from "./routes/PendukungRoute.js";
 
-
+// var express = require("express");
+// var cors = require("cors");
+// var dotenv = require("dotenv");
+// var cookieParser = require("cookie-parser");
+// var fileUpload = require("express-fileupload");
 
 dotenv.config();
 const app = express();

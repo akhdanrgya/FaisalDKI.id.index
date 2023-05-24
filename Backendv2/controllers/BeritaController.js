@@ -3,6 +3,9 @@ import Berita from "../models/BeritaModel.js"
 import path from "path"
 import fs from "fs"
 
+// const fs = require('fs')
+// const path = require('path')
+
 export const getBerita = async(req, res) =>{
     try {
         const response =  await Berita.findAll()
