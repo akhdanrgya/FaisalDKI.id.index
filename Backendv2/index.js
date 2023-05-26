@@ -10,11 +10,11 @@ import GaleriRoute from "./routes/GaleriRoute.js";
 import router from "./routes/index.js";
 import PendukungRoute from "./routes/PendukungRoute.js";
 
-// var express = require("express");
-// var cors = require("cors");
-// var dotenv = require("dotenv");
-// var cookieParser = require("cookie-parser");
-// var fileUpload = require("express-fileupload");
+// const express = require("express");
+// const cors = require("cors");
+// const dotenv = require("dotenv");
+// const cookieParser = require("cookie-parser");
+// const fileUpload = require("express-fileupload");
 
 dotenv.config();
 const app = express();
