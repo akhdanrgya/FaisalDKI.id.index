@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import React, { useState } from 'react';
+import React from 'react';
 
 import Main from "./Pages/Main"
 import RelawanForm from "./Components/RelawanForm"
@@ -25,16 +25,6 @@ const App = () =>{
         <Route path="/adminfaisal" element={<Admin/>}/>
         <Route path="/relawan/form" element={<RelawanForm/>}/>
         <Route path="/kabar/:id" element={<News/>}/>
-
-        {/* testing future */}
-      {/* <PrivateRoute path="/adminfaisal/dashboard" element={<AdminDash />} />
-      <PrivateRoute path="/adminfaisal/data/pendukung" element={<AdminTeam />} />
-      <PrivateRoute path="/adminfaisal/post/galeri" element={<AdminPostGaleri />} />
-      <PrivateRoute path="/adminfaisal/post/kabar" element={<AdminPostKabar />} />
-      <PrivateRoute path="/adminfaisal/post/galeri/upload" element={<AddGaleri />} />
-      <PrivateRoute path="/adminfaisal/post/kabar/edit/:id" element={<EditBerita />} /> */}
-        {/* private route */}
-
 
       
         <Route path="/adminfaisal/dashboard" element={<AdminDash/>}/>

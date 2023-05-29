@@ -9,6 +9,7 @@ import HeaderB from "./navbarBerita";
 const News = () => {
   const [berita, setBerita] = useState(null);
   const { id } = useParams();
+  const port = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     getBerita();
@@ -16,7 +17,7 @@ const News = () => {
 
   const getBerita = async () => {
     try {
-      const response = await axios.get(`http://localhost:5500/berita/${id}`);
+      const response = await axios.get(`${port}/berita/${id}`);
       const data = response.data;
       setBerita(data);
       console.log(data)

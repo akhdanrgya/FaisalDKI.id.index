@@ -18,13 +18,14 @@ function AdminDash() {
   const [expire, setExpire] = useState('');
   const [name, setName] = useState('');
   const [token, setToken] = useState("");
+  const port = process.env.REACT_APP_API_KEY;
   useEffect(() => {
     refreshToken();
   }, []);
   
   const refreshToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5500/token');
+      const response = await axios.get(`${port}/token`);
       setToken(response.data.accessToken);
       const decoded = jwt_decode(response.data.accessToken);
       setName(decoded.name);
@@ -41,7 +42,7 @@ const axiosJWT = axios.create();
 axiosJWT.interceptors.request.use(async (config) => {
     const currentDate = new Date();
     if (expire * 1000 < currentDate.getTime()) {
-        const response = await axios.get('http://localhost:5500/token');
+        const response = await axios.get(`${port}/token`);
         config.headers.Authorization = `Bearer ${response.data.accessToken}`;
         setToken(response.data.accessToken);
         const decoded = jwt_decode(response.data.accessToken);
@@ -54,7 +55,7 @@ axiosJWT.interceptors.request.use(async (config) => {
 });
 
 const getUsers = async () => {
-  const response = await axiosJWT.get('http://localhost:5500/users', {
+  const response = await axiosJWT.get(`${port}/users`, {
       headers: {
           Authorization: `Bearer ${token}`
       }

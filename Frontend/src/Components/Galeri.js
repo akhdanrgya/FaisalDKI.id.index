@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 
 const Galeri = () => {
   const [galeri, setGaleri] = useState([]);
+  const port = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     getGaleri();
   }, []);
 
   const getGaleri = async () => {
-    const response = await axios.get("http://localhost:5500/galeri");
+    const response = await axios.get(`${port}/galeri`);
     setGaleri(response.data);
   };
 

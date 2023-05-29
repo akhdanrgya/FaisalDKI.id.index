@@ -2,7 +2,6 @@
 import Footer from "./Footer";
 import React from "react";
 import KabarU from "./berita/KabarTerupdate";
-import Kabar from "./Kabar";
 
 const NewsArticle = () => {
   return (

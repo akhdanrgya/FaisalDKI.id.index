@@ -9,11 +9,12 @@ const Admin = () => {
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
+  const port = process.env.REACT_APP_API_KEY;
 
   const Auth = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5500/login', {
+      await axios.post(`${port}/login`, {
         email: email,
         password: password,
       });

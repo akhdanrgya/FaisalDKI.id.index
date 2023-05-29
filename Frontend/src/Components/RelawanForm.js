@@ -11,11 +11,12 @@ const RelawanForm = () => {
   const [hp, setHp] = useState("");
   const [nik, setNik] = useState("");
   const navigate = useNavigate()
+  const port = process.env.REACT_APP_API_KEY;
 
   const savePendukung = async (e) =>{
     e.preventDefault()
     try {
-        await axios.post("http://localhost:5500/pendukung",{
+        await axios.post(`${port}/pendukung`,{
             nama,
             alamat,
             nik,

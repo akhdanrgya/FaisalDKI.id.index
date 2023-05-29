@@ -19,13 +19,14 @@ const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [pendukung, setPendukung] = useState([]);
+  const port = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     getPendukung();
   }, []);
 
   const getPendukung = async () => {
-    const response = await axios.get("http://localhost:5500/pendukung");
+    const response = await axios.get(`${port}/pendukung`);
     setPendukung(response.data);
   };
 

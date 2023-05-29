@@ -8,7 +8,6 @@ import jwt_decode from "jwt-decode"
 
 const EditBerita = () => {
   const editor = useRef(null);
-  
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const [file, setFile] = useState("");
@@ -19,13 +18,14 @@ const EditBerita = () => {
   const [expire, setExpire] = useState('');
   const [name, setName] = useState('');
   const [token, setToken] = useState("");
+  const port = process.env.REACT_APP_API_KEY;
   useEffect(() => {
     refreshToken();
   }, []);
   
   const refreshToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5500/token');
+      const response = await axios.get(`${port}/token`);
       setToken(response.data.accessToken);
       const decoded = jwt_decode(response.data.accessToken);
       setName(decoded.name);
@@ -42,7 +42,7 @@ const axiosJWT = axios.create();
 axiosJWT.interceptors.request.use(async (config) => {
     const currentDate = new Date();
     if (expire * 1000 < currentDate.getTime()) {
-        const response = await axios.get('http://localhost:5500/token');
+        const response = await axios.get(`${port}/token`);
         config.headers.Authorization = `Bearer ${response.data.accessToken}`;
         setToken(response.data.accessToken);
         const decoded = jwt_decode(response.data.accessToken);
@@ -55,7 +55,7 @@ axiosJWT.interceptors.request.use(async (config) => {
 });
 
 const getUsers = async () => {
-  const response = await axiosJWT.get('http://localhost:5500/users', {
+  const response = await axiosJWT.get(`${port}/users`, {
       headers: {
           Authorization: `Bearer ${token}`
       }
@@ -70,7 +70,7 @@ const getUsers = async () => {
   }, []);
 
   const getBeritaById = async () => {
-    const response = await axios.get(`http://localhost:5500/berita/${id}`);
+    const response = await axios.get(`${port}/berita/${id}`);
     setTitle(response.data.title);
     setFile(response.data.image);
     setPreview(response.data.url);
@@ -89,8 +89,9 @@ const getUsers = async () => {
     formData.append("file", file);
     formData.append("title", title);
     formData.append("artikel", content);
+    
     try {
-      await axios.patch(`http://localhost:5500/Berita/${id}`, formData, {
+      await axios.patch(`${port}/Berita/${id}`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
         },

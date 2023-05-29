@@ -6,13 +6,14 @@ import { Link } from "react-router-dom";
 
 const KabarU = () => {
   const [kabar, setKabar] = useState([]);
+  const port = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     getKabar();
   }, []);
 
   const getKabar = async () => {
-    const response = await axios.get("http://localhost:5500/berita");
+    const response = await axios.get(`${port}/berita`);
     setKabar(response.data);
   };
 

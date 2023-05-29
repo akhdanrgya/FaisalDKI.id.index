@@ -1,10 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../Components/admin/data/mockData";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../Components/admin/Dash/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -13,13 +9,15 @@ const Team = () => {
   const [pendukung, setPendukung] = useState([]);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const port = process.env.REACT_APP_API_KEY;
+
 
   useEffect(() => {
     getPendukung();
   }, []);
 
   const getPendukung = async () => {
-    const response = await axios.get("http://localhost:5500/pendukung");
+    const response = await axios.get(`${port}/pendukung`);
     setPendukung(response.data);
   };
 
